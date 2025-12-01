@@ -12,6 +12,7 @@ const Login = () => {
   const {
     register,
     formState: { errors },
+    handleSubmit,
   } = useForm({
     defaultValues: {
       phoneNumber: "",
@@ -20,7 +21,7 @@ const Login = () => {
   });
   return (
     <div className="flex flex-col bg-[#0095da] w-full h-full pt-40 ">
-      <div className="flex flex-col  bg-white justify-between relative px-5 py-8 rounded-t-2xl h-full">
+      <form className="flex flex-col  bg-white justify-between relative px-5 py-8 rounded-t-2xl h-full">
         <div className="flex flex-col">
           <img
             className="w-[110px] h-[74px] absolute -top-2 left-50  -translate-1/2"
@@ -43,7 +44,6 @@ const Login = () => {
                 className="w-full  placeholder:text-gray-400 text-[15px] outline-none"
                 placeholder={t("loginPage.placeholder")}
                 {...register("phoneNumber", {
-                  minLength: 11,
                   required: true,
                 })}
                 type="text"
@@ -64,12 +64,13 @@ const Login = () => {
               changePage("/Otp");
             }}
             className="bg-[#0095da] py-4 text-white rounded-md"
+            type="submit"
           >
             {t("loginPage.button1")}
           </button>
           <Button2 />
         </div>
-      </div>
+      </form>
     </div>
   );
 };
