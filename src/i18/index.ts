@@ -18,7 +18,7 @@ const resources = {
       loginPage: {
         register: "ثبت نام",
         login: "ورود",
-        hi_Please_Enter_Your_PhoneNumber:
+        hiPleaseEnterYourPhoneNumber:
           "سلام،لطفا شماره‌ تلفن  همراه خود را وارد کنید.",
         placeholder: "تلفن همراه",
         error: "تلفن همراه لازم است.",
@@ -27,11 +27,33 @@ const resources = {
       },
       otpPage: {
         enterOkCode: "کد تائید را وارد کنید",
-        sendACodeToThisNumber: "کد 5 رقمی به شماره‌ی 09300552948 ارسال شد",
+        sendACodeToThisNumber: "کد 5 رقمی به شماره‌ی {{Number}} ارسال شد",
         hiPleaseEnterYourPhoneNumber:
           "سلام،لطفا شماره‌ تلفن  همراه خود را وارد کنید.",
         reciveCodeAgian: "دریافت مجدد کد تائید",
         OkGo: "تائید و ادامه",
+      },
+      mainPage: {
+        number: "{{Number}}",
+        title1: "خدمات",
+        title2: "شارژ",
+        title3: "قرعه کشی",
+        title4: "اینترنت",
+        chart1: "مکالمه",
+        chart2: "اینترنت",
+        chart3: "پیامک",
+        thereIsNo: "بسته  ندارید",
+        thereIs: "بسته  دارید",
+        lastChar: "باقی مانده ی شارژ",
+        uniqueV: "ریال",
+        buycharch: "خرید شارژ",
+        becomeAlways: "تبدیل به دائمی",
+        offer: "پیشنهاد",
+        admire: "تشویق",
+        home: "خانه",
+        packages: "بسته‌ها",
+        work: "خدمات",
+        parse: "کیف‌ پول",
       },
     },
   },
