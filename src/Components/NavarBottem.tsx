@@ -72,7 +72,7 @@ const NavarBottom = () => {
       <div
         onClick={() => {
           setActiveNavar("char");
-          changePage("/MainPage"); //shoude be change
+          changePage("/Change");
         }}
         className={clsx(
           "flex flex-col justify-center gap-2 items-center py-2.5 px-5 rounded-lg",
@@ -126,7 +126,7 @@ const NavarBottom = () => {
       <div
         onClick={() => {
           setActiveNavar("packages");
-          changePage("/MainPage"); //shoude be change
+          changePage("/Internet");
         }}
         className={clsx(
           "flex flex-col justify-center gap-2 items-center py-2.5 px-3.5 rounded-lg",
@@ -265,7 +265,7 @@ const NavarBottom = () => {
       <div
         onClick={() => {
           setActiveNavar("work");
-          //shoude be change
+          changePage("/Services");
         }}
         className={clsx(
           "flex flex-col justify-center gap-2 items-center py-2.5 px-4 rounded-lg",
@@ -313,7 +313,7 @@ const NavarBottom = () => {
       <div
         onClick={() => {
           setActiveNavar("parse");
-          //shoude be change
+          changePage("/Parse")
         }}
         className={clsx(
           "flex flex-col justify-center gap-2 items-center py-2.5 px-3 rounded-lg",

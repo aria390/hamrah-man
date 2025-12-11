@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import logo from "../img/dark-logo.svg";
 import { useForm } from "react-hook-form";
@@ -25,6 +25,14 @@ const Login = () => {
       phoneNumber: "",
     },
   });
+
+  useEffect(() => {
+    const phone = localStorage.getItem("phoneNumber");
+    if (phone) {
+      changePage("/MainPage");
+    }
+  }, [localStorage]);
+
   return (
     <div className="flex flex-col bg-[#0095da] w-full h-full pt-40 ">
       <form

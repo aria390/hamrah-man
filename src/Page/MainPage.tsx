@@ -1,15 +1,123 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router";
 import NavarBottom from "../Components/NavarBottem";
 import FisrtSliderImg from "../img/forFirstSliderHamrah.jpg";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Autoplay, FreeMode, Pagination } from "swiper/modules";
 import { useNumberLogin } from "../Store/useNumberLogin";
+import { SwiperSlide, Swiper } from "swiper/react";
+import "../CSS/swiper.css";
+import { Autoplay, FreeMode, Pagination } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/pagination";
+import "swiper/css/navigation";
+import Chart from "react-apexcharts";
 
 const MainPage = () => {
   const { t } = useTranslation();
-   const { number, setNumber } = useNumberLogin();
+  const { number, setNumber } = useNumberLogin();
+  const changePage = useNavigate();
+
+  const options1: ApexCharts.ApexOptions = {
+    chart: {
+      type: "radialBar",
+    },
+    plotOptions: {
+      radialBar: {
+        hollow: {
+          size: "60%", // اندازه فضای خالی وسط
+        },
+        track: {
+          strokeWidth: "100%",
+          background: "#000000",
+        },
+        dataLabels: {
+          show: true,
+          name: {
+            show: true,
+            fontSize: "11px",
+            color: "#848484",
+          },
+          value: {
+            show: true,
+            color: "#848484",
+            fontSize: "12px",
+          },
+        },
+      },
+    },
+    labels: [t("mainPage.thereIsNo")], // برچسب نمودار
+  };
+  const options2: ApexCharts.ApexOptions = {
+    chart: {
+      type: "radialBar",
+    },
+    plotOptions: {
+      radialBar: {
+        hollow: {
+          size: "60%", // اندازه فضای خالی وسط
+        },
+        track: {
+          strokeWidth: "100%",
+          background: "#000000",
+        },
+        dataLabels: {
+          show: true,
+          name: {
+            show: true,
+            fontSize: "11px",
+            color: "#848484",
+          },
+          value: {
+            show: true,
+            color: "#848484",
+            fontSize: "12px",
+          },
+        },
+      },
+    },
+    labels: [t("mainPage.thereIs")], // برچسب نمودار
+  };
+  const options3: ApexCharts.ApexOptions = {
+    chart: {
+      type: "radialBar",
+    },
+    plotOptions: {
+      radialBar: {
+        hollow: {
+          size: "60%", // اندازه فضای خالی وسط
+        },
+        track: {
+          strokeWidth: "100%",
+          background: "#000000",
+        },
+        dataLabels: {
+          show: true,
+          name: {
+            show: true,
+            fontSize: "11px",
+            color: "#848484",
+          },
+          value: {
+            show: true,
+            color: "#848484",
+            fontSize: "12px",
+          },
+        },
+      },
+    },
+    labels: [t("mainPage.thereIs")], // برچسب نمودار
+  };
+
+  const series1 = [10]; // مقدار درصدی که نمایش داده میشه
+  const series2 = [30]; // مقدار درصدی که نمایش داده میشه
+  const series3 = [50]; // مقدار درصدی که نمایش داده میشه
+
+  useEffect(() => {
+    const phone = localStorage.getItem("phoneNumber");
+    if (phone === null) {
+      changePage("/");
+    }
+  }, [localStorage]);
 
   return (
     <section className="bg-gray-100 h-full">
@@ -43,7 +151,9 @@ const MainPage = () => {
                   <path d="M4 6h16M4 18h16"></path>
                 </g>
               </svg>
-              <span className="text-[14px] ">{t("mainPage.number",{Number:number})}</span>
+              <span className="text-[14px] ">
+                {t("mainPage.number", { Number: number })}
+              </span>
             </div>
             <div>
               <svg
@@ -156,8 +266,425 @@ const MainPage = () => {
             </svg>
           </div>
         </div>
-        <div>
-          
+        <div className="flex justify-between px-2 gap-2 items-center bg-white rounded-lg">
+          <Swiper slidesPerView={4} spaceBetween={5} className="mySwiper ">
+            <SwiperSlide>
+              <div className="flex flex-col justify-center items-center gap-y-0.5 w-[72px] h-full  overflow-hidden ">
+                <a className="flex items-center justify-center w-[72px] h-[72px]  rounded-full bg-linear-to-tr from-[#F76B1C] to-[#FAD961]">
+                  <div className="flex items-center justify-center w-[68px]  h-[68px] md:h-[76px] bg-white rounded-full">
+                    <img
+                      className="w-[62px]  h-[62px] object-cover rounded-full"
+                      alt="اعتبار همراهی"
+                      src={FisrtSliderImg}
+                    />
+                  </div>
+                </a>
+
+                <p className=" text-xs  font-normal text-center whitespace-nowrap">
+                  {t("mainPage.title1")}
+                </p>
+              </div>
+            </SwiperSlide>
+            <SwiperSlide>
+              <div className="flex flex-col justify-center items-center gap-y-0.5 w-[72px] h-full  overflow-hidden ">
+                <a className="flex items-center justify-center w-[72px] h-[72px]  rounded-full bg-linear-to-tr from-[#F76B1C] to-[#FAD961]">
+                  <div className="flex items-center justify-center w-[68px]  h-[68px] md:h-[76px] bg-white rounded-full">
+                    <img
+                      className="w-[62px]  h-[62px] object-cover rounded-full"
+                      alt="اعتبار همراهی"
+                      src={FisrtSliderImg}
+                    />
+                  </div>
+                </a>
+
+                <p className=" text-xs  font-normal text-center whitespace-nowrap">
+                  {t("mainPage.title1")}
+                </p>
+              </div>
+            </SwiperSlide>
+            <SwiperSlide>
+              <div className="flex flex-col justify-center items-center gap-y-0.5 w-[72px] h-full  overflow-hidden ">
+                <a className="flex items-center justify-center w-[72px] h-[72px]  rounded-full bg-linear-to-tr from-[#F76B1C] to-[#FAD961]">
+                  <div className="flex items-center justify-center w-[68px]  h-[68px] md:h-[76px] bg-white rounded-full">
+                    <img
+                      className="w-[62px]  h-[62px] object-cover rounded-full"
+                      alt="اعتبار همراهی"
+                      src={FisrtSliderImg}
+                    />
+                  </div>
+                </a>
+
+                <p className=" text-xs  font-normal text-center whitespace-nowrap">
+                  {t("mainPage.title1")}
+                </p>
+              </div>
+            </SwiperSlide>
+            <SwiperSlide>
+              <div className="flex flex-col justify-center items-center gap-y-0.5 w-[72px] h-full  overflow-hidden ">
+                <a className="flex items-center justify-center w-[72px] h-[72px]  rounded-full bg-linear-to-tr from-[#F76B1C] to-[#FAD961]">
+                  <div className="flex items-center justify-center w-[68px]  h-[68px] md:h-[76px] bg-white rounded-full">
+                    <img
+                      className="w-[62px]  h-[62px] object-cover rounded-full"
+                      alt="اعتبار همراهی"
+                      src={FisrtSliderImg}
+                    />
+                  </div>
+                </a>
+
+                <p className=" text-xs  font-normal text-center whitespace-nowrap">
+                  {t("mainPage.title1")}
+                </p>
+              </div>
+            </SwiperSlide>
+            <SwiperSlide>
+              <div className="flex flex-col justify-center items-center gap-y-0.5 w-[72px] h-full  overflow-hidden ">
+                <a className="flex items-center justify-center w-[72px] h-[72px]  rounded-full bg-linear-to-tr from-[#F76B1C] to-[#FAD961]">
+                  <div className="flex items-center justify-center w-[68px]  h-[68px] md:h-[76px] bg-white rounded-full">
+                    <img
+                      className="w-[62px]  h-[62px] object-cover rounded-full"
+                      alt="اعتبار همراهی"
+                      src={FisrtSliderImg}
+                    />
+                  </div>
+                </a>
+
+                <p className=" text-xs  font-normal text-center whitespace-nowrap">
+                  {t("mainPage.title1")}
+                </p>
+              </div>
+            </SwiperSlide>
+            <SwiperSlide>
+              <div className="flex flex-col justify-center items-center gap-y-0.5 w-[72px] h-full  overflow-hidden ">
+                <a className="flex items-center justify-center w-[72px] h-[72px]  rounded-full bg-linear-to-tr from-[#F76B1C] to-[#FAD961]">
+                  <div className="flex items-center justify-center w-[68px]  h-[68px] md:h-[76px] bg-white rounded-full">
+                    <img
+                      className="w-[62px]  h-[62px] object-cover rounded-full"
+                      alt="اعتبار همراهی"
+                      src={FisrtSliderImg}
+                    />
+                  </div>
+                </a>
+
+                <p className=" text-xs  font-normal text-center whitespace-nowrap">
+                  {t("mainPage.title1")}
+                </p>
+              </div>
+            </SwiperSlide>
+            <SwiperSlide>
+              <div className="flex flex-col justify-center items-center gap-y-0.5 w-[72px] h-full  overflow-hidden ">
+                <a className="flex items-center justify-center w-[72px] h-[72px]  rounded-full bg-linear-to-tr from-[#F76B1C] to-[#FAD961]">
+                  <div className="flex items-center justify-center w-[68px]  h-[68px] md:h-[76px] bg-white rounded-full">
+                    <img
+                      className="w-[62px]  h-[62px] object-cover rounded-full"
+                      alt="اعتبار همراهی"
+                      src={FisrtSliderImg}
+                    />
+                  </div>
+                </a>
+
+                <p className=" text-xs  font-normal text-center whitespace-nowrap">
+                  {t("mainPage.title1")}
+                </p>
+              </div>
+            </SwiperSlide>
+            <SwiperSlide>
+              <div className="flex flex-col justify-center items-center gap-y-0.5 w-[72px] h-full  overflow-hidden ">
+                <a className="flex items-center justify-center w-[72px] h-[72px]  rounded-full bg-linear-to-tr from-[#F76B1C] to-[#FAD961]">
+                  <div className="flex items-center justify-center w-[68px]  h-[68px] md:h-[76px] bg-white rounded-full">
+                    <img
+                      className="w-[62px]  h-[62px] object-cover rounded-full"
+                      alt="اعتبار همراهی"
+                      src={FisrtSliderImg}
+                    />
+                  </div>
+                </a>
+
+                <p className=" text-xs  font-normal text-center whitespace-nowrap">
+                  {t("mainPage.title1")}
+                </p>
+              </div>
+            </SwiperSlide>
+          </Swiper>
+        </div>
+        <div className="flex bg-white rounded-lg">
+          <div className="flex flex-col  justify-center items-center">
+            <span className="pt-4 px-2 text-[14px] text-gray-600">
+              {t("mainPage.chart1")}
+            </span>
+            <Chart
+              options={options1}
+              series={series1}
+              type="radialBar"
+              height={130}
+              width={120}
+            />
+          </div>
+          <div className="flex flex-col  justify-center items-center">
+            <span className="pt-4 px-2 text-[14px] text-gray-600">
+              {t("mainPage.chart2")}
+            </span>
+            <Chart
+              options={options2}
+              series={series2}
+              type="radialBar"
+              height={130}
+              width={120}
+            />
+          </div>
+          <div className="flex flex-col justify-center items-center">
+            <span className="pt-4 px-2 text-[14px] text-gray-600">
+              {t("mainPage.chart3")}
+            </span>
+            <Chart
+              options={options3}
+              series={series3}
+              type="radialBar"
+              height={130}
+              width={120}
+            />
+          </div>
+        </div>
+        <div className="flex bg-white justify-between items-center rounded-lg p-4">
+          <div className="flex flex-col gap-1 ">
+            <p className="text-[12px]">{t("mainPage.lastChar")}:</p>
+            <p className="text-[12px]">
+              168.568
+              <span className="text-gray-600"> {t("mainPage.uniqueV")}</span>
+            </p>
+          </div>
+          <button className="text-[14px] bg-[#ff4f00] p-2 rounded-lg text-white">
+            {t("mainPage.buycharch")}
+          </button>
+        </div>
+        <div className="flex bg-white justify-between items-center rounded-lg p-4">
+          <div className="flex flex-col justify-center items-center gap-2">
+            <div className="p-2 border rounded-md border-gray-300">
+              <svg
+                fill="none"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+                // fit=""
+                height="24"
+                width="24"
+                preserveAspectRatio="xMidYMid meet"
+                focusable="false"
+              >
+                <defs></defs>
+                <path
+                  stroke="#ff4f00"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="1.5"
+                  d="M15.5 11h-.202c-.82 0-1.596-.373-2.11-1.014l-2.377-2.972A2.702 2.702 0 008.701 6H8.5A2.5 2.5 0 006 8.5v0A2.5 2.5 0 008.5 11h.202c.82 0 1.596-.373 2.11-1.014l2.377-2.972A2.701 2.701 0 0115.299 6h.201A2.5 2.5 0 0118 8.5v0a2.5 2.5 0 01-2.5 2.5z"
+                ></path>
+                <g
+                  stroke="#0095da"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="1.5"
+                >
+                  <path d="M16.5 21h.5a4 4 0 004-4V7a4 4 0 00-4-4H7a4 4 0 00-4 4v10a4 4 0 004 4h.5M9 17.068L12 14m0 0l3 3.068M12 14v6"></path>
+                  <path d="M15 17l-.78-.78c-.82-.82-2.22-.24-2.22.919V18.5M9 17l.78-.78c.82-.82 2.22-.24 2.22.919V21"></path>
+                </g>
+              </svg>
+            </div>
+            <p className="text-[11px] text-gray-600">
+              {t("mainPage.becomeAlways")}
+            </p>
+          </div>
+          <div className="flex flex-col justify-center items-center gap-2">
+            <div className="p-2 border rounded-md border-gray-300">
+              <svg
+                fill="none"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+                // fit=""
+                height="24"
+                width="24"
+                preserveAspectRatio="xMidYMid meet"
+                focusable="false"
+              >
+                <defs></defs>
+                <path
+                  stroke="#ff4f00"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="1.5"
+                  d="M10.5 9v6L8 13"
+                ></path>
+                <path
+                  stroke="#ff4f00"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="1.5"
+                  d="M10.5 9v3.503c0 1.006-1.164 1.566-1.95.937L8 13M13.5 15V9l2.5 2"
+                ></path>
+                <path
+                  stroke="#ff4f00"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="1.5"
+                  d="M13.5 15v-3.503c0-1.006 1.164-1.566 1.95-.937L16 11"
+                ></path>
+                <path
+                  stroke="#0095da"
+                  strokeLinejoin="round"
+                  strokeWidth="1.5"
+                  d="M9.572 3.349a5 5 0 014.856 0l4 2.222A5 5 0 0121 9.942v4.116a5 5 0 01-2.572 4.37l-4 2.223a5 5 0 01-4.856 0l-4-2.222A5 5 0 013 14.058V9.942a5 5 0 012.572-4.37l4-2.223z"
+                ></path>
+              </svg>
+            </div>
+            <p className="text-[11px] text-gray-600">{t("mainPage.chart2")}</p>
+          </div>
+          <div className="flex flex-col justify-center items-center gap-2">
+            <div className="p-2 border rounded-md border-gray-300">
+              <svg
+                fill="none"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+                // fit=""
+                height="24"
+                width="24"
+                preserveAspectRatio="xMidYMid meet"
+                focusable="false"
+              >
+                <defs></defs>
+                <circle
+                  cx="7"
+                  cy="19"
+                  r="2"
+                  stroke="#ff4f00"
+                  strokeLinejoin="round"
+                  strokeWidth="1.5"
+                  transform="rotate(-90 7 19)"
+                ></circle>
+                <circle
+                  cx="15.5"
+                  cy="2.5"
+                  r="1.5"
+                  stroke="#ff4f00"
+                  strokeLinejoin="round"
+                  strokeWidth="1.5"
+                  transform="rotate(-90 15.5 2.5)"
+                ></circle>
+                <path
+                  stroke="#0095da"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="1.5"
+                  d="M2.424 16.094c-.612-.708-.56-1.625.148-2.617.707-.993 2.034-2.01 3.788-2.905 1.753-.894 3.843-1.619 5.965-2.07 2.123-.45 4.168-.603 5.84-.436 1.672.167 2.884.645 3.46 1.365.576.72.486 1.645-.256 2.64-.742.995-2.099 2.01-3.873 2.896-1.635.816-3.546 1.485-5.496 1.925"
+                ></path>
+                <path
+                  stroke="#0095da"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="1.5"
+                  d="M11.798 13.776c-.466.1-.921.167-1.34.196-.417.029-.79.02-1.097-.027-.307-.046-.541-.13-.69-.244-.148-.116-.208-.26-.176-.426.032-.167.155-.35.363-.543a4.16 4.16 0 01.848-.576 8.751 8.751 0 011.203-.522c.443-.156.91-.288 1.376-.389.466-.1.921-.167 1.34-.196.417-.029.79-.02 1.097.027.307.046.541.13.69.245.148.115.209.26.177.426-.033.166-.156.35-.364.542a4.163 4.163 0 01-.848.576 8.757 8.757 0 01-1.203.522c-.443.156-.91.288-1.376.389h0z"
+                ></path>
+              </svg>
+            </div>
+            <p className="text-[11px] text-gray-600">{t("mainPage.offer")}</p>
+          </div>
+          <div className="flex flex-col justify-center items-center gap-2">
+            <div className="p-2 border rounded-md border-gray-300">
+              <svg
+                fill="none"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+                // fit=""
+                height="24"
+                width="24"
+                preserveAspectRatio="xMidYMid meet"
+                focusable="false"
+              >
+                <defs></defs>
+                <path
+                  stroke="#ff4f00"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="1.5"
+                  d="M15 19.5a2.5 2.5 0 002.5-2.5 2.5 2.5 0 002.5 2.5 2.5 2.5 0 00-2.5 2.5 2.5 2.5 0 00-2.5-2.5z"
+                ></path>
+                <path
+                  stroke="#ff4f00"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="1.5"
+                  d="M18.239 18.913a.937.937 0 10-1.326 1.326.937.937 0 001.326-1.326zM5 5a2 2 0 002-2 2 2 0 002 2 2 2 0 00-2 2 2 2 0 00-2-2z"
+                ></path>
+                <path
+                  stroke="#ff4f00"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="1.5"
+                  d="M7.59 4.53a.75.75 0 10-1.06 1.061.75.75 0 001.06-1.06z"
+                ></path>
+                <path
+                  stroke="#0095da"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="1.5"
+                  d="M10.055 2.93l.578-.455a2.205 2.205 0 012.734 0l.578.455c.41.323.917.49 1.436.474l.732-.023a2.225 2.225 0 012.204 1.62l.211.738c.143.5.454.934.88 1.228l.625.434a2.257 2.257 0 01.837 2.606l-.26.738a2.267 2.267 0 000 1.51l.26.738c.271.766.107 1.602-.393 2.201M3.967 7.401a2.257 2.257 0 00-.837 2.606l.26.738a2.266 2.266 0 010 1.51l-.26.738c-.34.96.004 2.03.837 2.606l.626.434c.425.294.736.728.879 1.228l.21.738a2.225 2.225 0 002.205 1.62l.732-.023a2.208 2.208 0 011.436.474l.578.455c.402.317.884.475 1.367.475M14.5 9.5l-5 5M9.5 14.5l2.938-2.938c.76-.76 2.062-.222 2.062.855v0"
+                ></path>
+                <path
+                  stroke="#0095da"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="1.5"
+                  d="M9.5 14.5l2.938-2.938c.76-.76.222-2.062-.855-2.062v0"
+                ></path>
+                <path
+                  stroke="#0095da"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="1.5"
+                  d="M10.334 9.5H14.5v4.167"
+                ></path>
+              </svg>
+            </div>
+            <p className="text-[11px] text-gray-600">{t("mainPage.admire")}</p>
+          </div>
+        </div>
+        <div className="flex flex-col justify-center items-center gap-3">
+          <Swiper
+            dir="ltr"
+            spaceBetween={30}
+            autoplay={{
+              delay: 2500,
+              disableOnInteraction: false,
+            }}
+            loop={true}
+            pagination={{
+              clickable: true,
+              el: ".button-slider",
+            }}
+            navigation={true}
+            modules={[Autoplay, Pagination]}
+            className="mySwiper"
+          >
+            <SwiperSlide className="image">
+              <img src={FisrtSliderImg} alt="" />
+            </SwiperSlide>
+            <SwiperSlide className="image">
+              <img src={FisrtSliderImg} alt="" />
+            </SwiperSlide>
+            <SwiperSlide className="image">
+              <img src={FisrtSliderImg} alt="" />
+            </SwiperSlide>
+            <SwiperSlide className="image">
+              <img src={FisrtSliderImg} alt="" />
+            </SwiperSlide>
+            <SwiperSlide className="image">
+              <img src={FisrtSliderImg} alt="" />
+            </SwiperSlide>
+            <SwiperSlide className="image">
+              <img src={FisrtSliderImg} alt="" />
+            </SwiperSlide>
+          </Swiper>
+          <div
+            dir="ltr"
+            className="button-slider text-center flex gap-2 justify-center items-center"
+          ></div>
         </div>
       </div>
       <NavarBottom />

@@ -12,7 +12,7 @@ export const useNumberLogin = create<TNumberLogin>()(
       number: "",
       setNumber: (value) => set(() => ({ number: value })),
     }),
-    { name: "phonNumber" }
+    { name: "phoneNumber" }
   )
 );
 
